@@ -18,9 +18,10 @@ const getUsersFromFile = cb => {
 };
 
 module.exports = class Users {
-    constructor(name,lastname){
+    constructor(name,lastname,imageUrl){
         this.name = name ;
         this.lastname =  lastname;
+        this.imageUrl = imageUrl;
     }
     save(){
       getUsersFromFile(users => {

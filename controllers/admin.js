@@ -11,19 +11,19 @@ exports.getAddUser = (req, res, next) => {
   };
 exports.postAddUser = (req, res, next) => {
     // const title = req.body.title;
-    // const imageUrl = req.body.imageUrl;
+    const imageUrl = req.body.imageUrl;
     const name = req.body.name;
     const lastname = req.body.lastname;
-    const user = new Users( name, lastname);
+    const user = new Users( name, lastname,imageUrl);
     user.save();
     res.redirect('/');
-  };
+};
 exports.getUsers = (req, res, next) => {
-    Users.fetchAll(users => {
-      res.render('admin/users', {
-        prods: users,
-        pageTitle: 'Admin Users',
-        path: '/admin/users'
-      });
+  Users.fetchAll(users => {
+    res.render('admin/users', {
+      prods: users,
+      pageTitle: 'Admin Users',
+      path: '/admin/users'
     });
-  };
+  });
+};

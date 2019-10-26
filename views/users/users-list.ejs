@@ -1,38 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+<%- include('../includes/head.ejs') %>
 </head>
 <body>
-    <h2>USERS LIST</h2>
-    <div>
-        <% for (let user of prods) { %>
-            <article class="card product-item">
-                <header class="card__header">
-                    <h1 class="product__title">
-                        <%= user.name %>
-                    </h1>
-                </header>
-                <div class="card__image">
-                    <img src="" alt="">
-                </div>
-                <div class="card__content">
-                    <h2 class="product__price">
-                        <%= user.lastname %>
-                    </h2>
-                   
-                </div>
-                <div class="card__actions">
-                    <form action="/add-to-cart" method="POST">
-                        <button class="btn">Add to Cart</button>
-                    </form>
-                </div>
-            </article>
+    <%- include('../includes/navigation.ejs') %>
+    <main>
+        <% if (prods.length > 0) { %>
+        <div class="grid">
+            <% for (let user of prods) { %>
+                <article class="card card-lg">
+                    <% if (user.imageUrl) { %>
+                        <img src="<%= user.imageUrl %>" alt="" srcset="" class="card-profile">
+                    <% } else { %>
+                        <img src="https://los40es00.epimg.net/los40/imagenes/2019/07/19/comics/1563540565_888864_1563540663_noticia_normal.jpg" alt="" srcset="" class="card-profile">
+                    <% } %>
+                    <div class="card-body">
+                        <h5 class="card-title"> <%= user.name %>  <%= user.lastname %></h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <form action="/add-to-cart" method="POST">
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </form>
+                    </div>    
+                </article>
+            <% } %>
+        </div>
+        <% } else { %>
+            <h1>No Users Found!</h1>
         <% } %>
-    </div>
+    </main>
     
 </body>
 </html>
