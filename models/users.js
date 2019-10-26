@@ -18,9 +18,17 @@ const getUsersFromFile = cb => {
 };
 
 module.exports = class Users {
-    constructor(name,lastanme){
+    constructor(name,lastname){
         this.name = name ;
-        this.lastanme =  lastanme;
+        this.lastname =  lastname;
+    }
+    save(){
+      getUsersFromFile(users => {
+        users.push(this);
+        fs.writeFile(p, JSON.stringify(users), err => {
+          console.log(err);
+        });
+      });
     }
     static fetchAll(cb) {
         getUsersFromFile(cb);

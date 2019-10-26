@@ -8,5 +8,31 @@
 </head>
 <body>
     <h2>USERS LIST</h2>
+    <div>
+        <% for (let user of prods) { %>
+            <article class="card product-item">
+                <header class="card__header">
+                    <h1 class="product__title">
+                        <%= user.name %>
+                    </h1>
+                </header>
+                <div class="card__image">
+                    <img src="" alt="">
+                </div>
+                <div class="card__content">
+                    <h2 class="product__price">
+                        <%= user.lastname %>
+                    </h2>
+                   
+                </div>
+                <div class="card__actions">
+                    <form action="/add-to-cart" method="POST">
+                        <button class="btn">Add to Cart</button>
+                    </form>
+                </div>
+            </article>
+        <% } %>
+    </div>
+    
 </body>
 </html>
